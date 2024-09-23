@@ -1,0 +1,174 @@
+body {
+    background-image: url("/static/poke.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: crisp-edges;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+/* Thiết lập hai cột bên trái và bên phải */
+.left-section {
+    width: 30%;
+    float: left;
+    padding: 30px; /* Thêm padding cho phần bên trái */
+}
+
+.right-section {
+    width: 50%;
+    float: right;
+    padding: 30px; /* Thêm padding cho phần bên phải */
+}
+
+/* Thiết lập container cho các input */
+.container {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 35px 40px; /* 5px trên và dưới, 10px trái và phải */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Căn giữa nội dung trong container */
+}
+
+
+h1 {
+    color: blue;
+    font-weight: bolder;
+}
+
+p {
+    font-size: 1.2rem; /* Thay đổi kích thước chữ trong đoạn văn */
+}
+
+a.back-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    background-color: blue;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+a.back-button:hover {
+    background-color: darkblue;
+}
+
+.btn {
+    display: inline-block; /* Đảm bảo nút có thể căn giữa */
+    margin-top: 1rem; /* Tạo khoảng cách trên nút */
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+.btn:hover {
+    background-color: darkred;
+    transform: scale(1.05); /* Phóng to nút khi hover */
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin: 1rem 0;
+    text-align: center; /* Căn giữa nội dung trong form-group */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: center; /* Căn giữa label */
+}
+
+.form-group input,
+.form-group select {
+    width: 95%; /* Điều chỉnh chiều rộng của input */
+    padding: 0.75rem; /* Điều chỉnh khoảng cách bên trong của input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi chiều rộng */
+    margin: 0 auto; /* Căn giữa select */
+    display: block; /* Hiển thị dưới dạng block để căn giữa */
+}
+
+.form-group select option {
+    font-size: 1.5rem; /* Thay đổi kích thước chữ trong option */
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin: 0 0.5rem;
+}
+
+.form-group input {
+    height: 2.5rem; /* Điều chỉnh chiều cao của input */
+}
+
+.pokemon-animation {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Hiệu ứng cho khung chứa Pokémon */
+.pokemon-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+.pokemon-card:hover {
+    transform: translateY(-5px); /* Đẩy khung lên khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Tăng độ bóng */
+}
+
+
+.moving-pokemon {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi cho hình ảnh */
+}
+
+.moving-pokemon:hover {
+    transform: scale(1.05); /* Phóng to hình ảnh khi hover */
+}
+
+/* Animation cho khung chứa */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Áp dụng animation cho container */
+.container {
+    animation: fadeIn 0.5s ease; /* Hiệu ứng khi xuất hiện */
+}
+
+canvas {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.chart {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Legendary Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-3d"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="left-section">
+        <div class="pokemon-animation">
+            <img src="{{ url_for('static', filename='fly.gif') }}" alt="Pokemon Animation" class="moving-pokemon">
+        </div>
+        <canvas id="threeDChart" width="400" height="400"></canvas>
+    </div>
+
+    <div class="right-section">
+        <div class="container">
+            <h1>Pokemon Legendary Prediction</h1>
+            <form action="/predict" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="attack">Attack</label>
+                        <input type="number" name="attack" id="attack" min="5" max="185" required placeholder="5-185, e.g: 115">
+                    </div>
+                    <div class="form-group">
+                        <label for="tot_abilities">Total Abilities</label>
+                        <input type="number" name="tot_abilities" id="tot_abilities" min="1" max="6" required placeholder="1-6, e.g: 2">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="base_egg_steps">Base Egg Steps</label>
+                        <input type="number" name="base_egg_steps" id="base_egg_steps" min="1280" max="30720" required placeholder="1280-30720, e.g: 20480">
+                    </div>
+                    <div class="form-group">
+                        <label for="base_total">Base Total</label>
+                        <input type="number" name="base_total" id="base_total" min="180" max="780" required placeholder="180-780, e.g: 580">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="defense">Defense</label>
+                        <input type="number" name="defense" id="defense" min="5" max="230" required placeholder="5-230, e.g: 85">
+                    </div>
+                    <div class="form-group">
+                        <label for="experience_growth">Experience Growth</label>
+                        <input type="number" name="experience_growth" id="experience_growth" min="600000" max="1640000" required placeholder="600000-1640000, e.g: 1250000">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="height_m">Height (m)</label>
+                        <input type="number" step="any" name="height_m" id="height_m" min="0.1" max="9.2" required placeholder="0.1-9.2, e.g: 2.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="hp">HP</label>
+                        <input type="number" name="hp" id="hp" min="1" max="255" required placeholder="1-255, e.g: 115">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight_kg">Weight (kg)</label>
+                        <input type="number" step="any" name="weight_kg" id="weight_kg" min="0.1" max="1000" required placeholder="0.1-1000, e.g: 198">
+                    </div>
+                    <div class="form-group">
+                        <label for="sp_attack">Special Attack</label>
+                        <input type="number" name="sp_attack" id="sp_attack" min="10" max="194" required placeholder="10-194, e.g: 90">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sp_defense">Special Defense</label>
+                        <input type="number" name="sp_defense" id="sp_defense" min="20" max="230" required placeholder="20-230, e.g: 75">
+                    </div>
+                    <div class="form-group">
+                        <label for="speed">Speed</label>
+                        <input type="number" name="speed" id="speed" min="5" max="180" required placeholder="5-180, e.g: 100">
+                    </div>
+                </div  class="btn-container">
+                <button type="submit" class="btn">Predict</button>
+                </div>
+            </form>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script>
+        // Mã JavaScript để vẽ đồ thị 3D
+        const ctx3D = document.getElementById('threeDChart').getContext('2d');
+        const threeDChart = new Chart(ctx3D, {
+            type: 'bar',
+            data: {
+                labels: ['Blastoise', 'Litleo', 'Pancham'],
+                datasets: [{
+                    label: 'Attack Power',
+                    data: [53, 95, 82],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { enabled: true },
+                },
+                scales: {
+                    x: { type: 'category', title: { display: true, text: 'Pokemon' },
+                    ticks: { color: 'black' } },
+                    y: { beginAtZero: true, title: { display: true, text: 'Attack Power' },
+                    ticks: { color: 'black' } },
+                },
+                elements: {
+                    bar: {
+                        borderWidth: 5,
+                    }
+                },
+                animation: {
+                    duration: 500,
+                    easing: 'easeInOutBounce',
+                },
+                plugins: {
+                    chart3d: {
+                        enabled: true,
+                        alpha: 45,
+                        beta: 45,
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
