@@ -45,4 +45,4 @@
 | 39     | weight_kg         | Cân nặng của Pokémon (kg)                                               |
 | 40     | generation        | Thế hệ của Pokémon                                                      |
 | 41     | is_legendary      | Xác định liệu Pokémon có phải là huyền thoại không (1: có, 0: không)   |
-# Pokemon_data
+
